@@ -1,22 +1,20 @@
 import VueRouter from "vue-router"
-import account from "./main/Account.vue"
-import goodslist from "./main/GoodsList.vue"
-import signin from "./subcom/signin.vue"
-import register from "./subcom/register.vue"
+
+import HomeContainer from "./components/tabbar/HomeContainer.vue"
+import MemberContainer from "./components/tabbar/MemberContainer.vue"
+import ShopcarContainer from "./components/tabbar/ShopcarContainer.vue"
+import SearchContainer from "./components/tabbar/SearchContainer.vue"
 
 
 var router = new VueRouter({
     routes: [
-        {
-            path: '/account',
-            component: account,
-            children: [
-                { path: 'signin', component: signin },
-                { path: 'register', component: register }
-            ]
-        },
-        { path: '/goodslist', component: goodslist }
-    ]
+        { path: "/", redirect: "/home" },
+        { path: "/home", component: HomeContainer },
+        { path: "/member", component: MemberContainer },
+        { path: "/shopcart", component: ShopcarContainer },
+        { path: "/search", component: SearchContainer }
+    ],
+    linkActiveClass: " mui-active"
 })
 
 // 吧路由對象暴露出去

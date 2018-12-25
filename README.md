@@ -15,3 +15,17 @@
  + copy擴展字體庫 ttf 文件，到項目中
  + 為購物車 小圖標，添加如下樣式 `mui-icon mui-icon-extra mui-icon-extra-cart`
 3. 要在中間區域防止一個router-view來展示路由匹配到的組件
+
+## 改造 tabbar 為 router-link
+
+## 設置路由高亮
+
+## 點擊 tabbar 中的路由連接，展示對應的路由組件
+
+## 加載首頁輪播圖數據
+1. 獲取數據，如何獲取，使用 vue-resource
+2. 使用 vue-resource 的 this.$http.get 獲取數據
+3. 獲取到的數據，要保存到data身上
+4. 使用 v-for 循環渲染每個 item 項
+
+## 改造九宮格樣式
