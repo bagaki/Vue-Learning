@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import "./lib/mui/css/mui.min.css"
+import "./lib/mui/css/icons-extra.css"
 
 import Vue from "vue"
 import VueRouter from "vue-router"
