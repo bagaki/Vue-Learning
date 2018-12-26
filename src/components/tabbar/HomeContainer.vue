@@ -12,10 +12,10 @@
     <!-- 六宮格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/newslist">
           <img src="../../images/menu1.png">
           <div class="mui-media-body">News</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -66,7 +66,7 @@ export default {
   methods: {
     getSwipe() {
       // 獲取輪播圖數據
-      this.$http.get("http://vue.studyit.io/api/getlunbo").then(result => {
+      this.$http.get("api/getlunbo").then(result => {
         // console.log(result.body);
         if (result.body.status === 0) {
           this.swipeItems = result.body.message;
