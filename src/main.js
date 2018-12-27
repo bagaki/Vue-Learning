@@ -12,25 +12,30 @@ Vue.filter("dateFormat", function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 })
 
 // 完整導入
-// import MintUI from "mint-ui"
+import MintUI from "mint-ui"
 import "mint-ui/lib/style.css"
 // // 將MintUI 安裝到Vue中
-// Vue.use(MintUI)
+Vue.use(MintUI)
 
 // 按需導入
-import { Header, Swipe, SwipeItem, Button } from "mint-ui"
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// import { Header, Swipe, SwipeItem, Button, Lazyload } from "mint-ui"
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
 
 import app from "./App.vue"
 import router from "./router.js"
-
+import VuePreview from "vue-preview"
+Vue.use(VuePreview)
+// 圖片預覽插件
 import VueResource from "vue-resource"
 Vue.use(VueResource)
 // 設置請求根路徑
 Vue.http.options.root = 'http://vue.studyit.io';
+// 全局設置 post 時候表單數據格式組織形式
+Vue.http.options.emulateJSON = true
 
 
 var vm = new Vue({

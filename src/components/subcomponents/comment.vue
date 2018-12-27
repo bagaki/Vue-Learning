@@ -2,9 +2,9 @@
   <div class="cmt-container">
     <h3>Issue Comment</h3>
     <hr>
-    <textarea placeholder="Please input something(more 120 word)" maxlength="120"></textarea>
+    <textarea placeholder="Please input something(more 120 word)" maxlength="120" v-model="msg"></textarea>
 
-    <mt-button type="primary" size="large">Issue Comment</mt-button>
+    <mt-button type="primary" size="large" @click="postComments">Issue Comment</mt-button>
 
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
@@ -24,7 +24,8 @@ export default {
   date() {
     return {
       pageIndex: 1,
-      comments: []
+      comments: [],
+      msg: "" // 評論輸入的内容
     };
   },
   created() {
@@ -47,6 +48,31 @@ export default {
     getMore() {
       this.pageIndex++;
       this.getComments();
+    },
+    postComments() {
+      // 校驗是否爲空
+      if (this.msg.trim().length === 0) {
+        return Toast("The comment can not be empty");
+      }
+      // 發表評論
+      // 參數1：請求的URL地址
+      // 參數2：提交給服務器的數據對象 { content: this.msg }
+      // 參數3：定義提交的時候，表單中數據的格式 { emulateJSON: true }
+      this.$http
+        .post("api/postcomment/" + this.$route.params.id, {
+          content: this.msg.trim()
+        })
+        .then(function(result) {
+          if (result.body.status === 0) {
+            var cmt = {
+              user_name: "No name",
+              add_time: Date.now(),
+              content: this.msg.trim()
+            };
+            this.comments.unshift(cmt);
+            this.msg = "";
+          }
+        });
     }
   },
   props: ["id"]
