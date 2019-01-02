@@ -3,11 +3,7 @@
     <h3>HomeCotainer</h3>
 
     <!-- 輪播圖 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in swipeItems" :key="item.url">
-        <img src="item.img" alt="images">
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :swipeItems="swipeItems" :isfull="true"></swiper>
 
     <!-- 六宮格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -53,6 +49,7 @@
 
 <script>
 import { Toast } from "mint-ui";
+import swiper from "../subcomponents/swiper.vue";
 
 export default {
   data() {
@@ -75,6 +72,9 @@ export default {
         }
       });
     }
+  },
+  components: {
+    swiper
   }
 };
 </script>
