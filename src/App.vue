@@ -1,7 +1,11 @@
 <template>
   <div class="app-container">
     <!-- Header -->
-    <mt-header fixed title="項目"></mt-header>
+    <mt-header fixed title="項目">
+      <span slot="left" @click="goBack" v-show="flag">
+        <mt-button icon="back">Back</mt-button>
+      </span>
+    </mt-header>
     <!-- tabbar -->
     <transition>
       <router-view></router-view>
@@ -18,7 +22,7 @@
       </router-link>
       <router-link class="mui-tab-item-llb" to="/shopcart">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span>
         </span>
         <span class="mui-tab-label">購物車</span>
       </router-link>
@@ -31,7 +35,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      flag: false
+    };
+  },
+  created() {
+    this.flag = this.$route.path === "/home" ? false : true;
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    }
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      if (newVal === "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
