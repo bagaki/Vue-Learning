@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h3>HomeCotainer</h3>
-
     <!-- 輪播圖 -->
     <swiper :swipeItems="swipeItems" :isfull="true"></swiper>
 

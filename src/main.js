@@ -6,7 +6,6 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 
-import Vue from "vue"
 import Vuex from "vuex"
 // 注冊vuex到vue中
 Vue.use(Vuex)
@@ -38,7 +37,7 @@ Vue.use(VuePreview)
 import VueResource from "vue-resource"
 Vue.use(VueResource)
 // 設置請求根路徑
-Vue.http.options.root = 'http://vue.studyit.io';
+Vue.http.options.root = 'http://47.89.21.179:8080';
 // 全局設置 post 時候表單數據格式組織形式
 Vue.http.options.emulateJSON = true
 
