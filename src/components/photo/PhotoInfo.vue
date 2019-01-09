@@ -8,7 +8,7 @@
 
     <hr>
 
-    <!-- 縮略圖 -->
+    <!-- 縮略圖：图片前预览 -->
     <vue-preview :slides="slide1" @close="handleClose">
       <img
         :src="item.src"
